@@ -1,7 +1,278 @@
+/*공통 바디 css*/
 body {
-    background-color:lightgray;
+    background-color:white; /*배경색*/
+    text-align: center; /*텍스트 중앙 정렬*/
 }
 
-h1{
-    color:blue;
+/*메인 페이지 css*/
+.main-body{
+    min-height: 100vh; /*바디의 최소 높이를 화면 전체 크기로*/
+    display: flex; /*요소 배치 기준 flex로 설정*/
+    flex-direction: column; /*위에서 아래로*/
 }
+
+.main-profile{
+    margin-top: 100px; /*프로필 위 여백*/
+}
+
+.main-h1{
+    color:black; /*h1 텍스트 컬러*/
+    font-size: 42px; /*이름 글자 크기*/
+    margin-bottom: 20px;
+}
+
+.main-profile p{
+    color: #333333; /*프로필 글자색*/
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.main-intro {
+    margin-top: 30px;
+    font-size: 18px; 
+    font-weight: 500;
+}
+
+/*메뉴 그룹설정*/
+.main-menu{
+    margin-top: 30px; /*메뉴 위 여백*/
+}
+
+/*링크 css*/
+.main-menu a {
+    display: inline-block; /*링크 한줄배치 및 블럭으로 설정*/
+    padding: 12px 30px; /*버튼 안쪽 여백 위아래12 좌우30*/
+    margin: 0 8px; /*버튼 바깥쪽 여백 위아래0 좌우8*/
+
+    color: #2563eb; /*버튼 글자색*/
+    background-color: white; /*버튼 배경색*/
+    border: 2px solid #2563eb; /*버튼 테두리 설정*/
+    border-radius: 8px; /*버튼 모서리 라운딩*/
+
+    text-decoration: none; /*링크 밑줄 제거*/
+    transition: all 0.2s ease; /*마우스 효과추가*/
+}
+
+.main-menu a:hover{
+    color: white; /*마우스 올렸을때 글자 색*/
+    background-color: #2563eb; /*마우스 올렸을 때 배경색*/
+    transform: translateY(-10px); /*버튼을 위로 10px 이동*/
+    box-shadow: 0 4px 10px rgba(37,99,235,0.2); /*버튼 그림자*/
+}
+
+.main-contact {
+    margin-top: auto; /*연락처 윗공간 전체를 여백으로 자동세팅*/
+    padding-bottom: 30px;
+    color: #555555;
+}
+
+/*스케줄 페이지 css*/
+.schedule-body{
+    width: 90%; /*화면 너비의 90%만 사용*/
+    margin: 70px auto; /*위아래70px, 좌우 자동 정렬*/
+}
+
+.schedule-body table{
+    width: 100%; /*시간표 너비를 전체 사용*/
+    border-collapse: collapse; /*테이블 테두리를 하나로 합침*/
+    margin-top: 30px; /*제목과 시간표 사이 여백*/
+}
+
+.schedule-body th, /*th=제목칸 , td=내용칸*/
+.schedule-body td {
+    border: 1px solid #2563eb; /*칸 테두리*/
+    padding: 14px 8px; /*칸 안쪽 여백*/
+}
+
+.schedule-body th{
+    background-color: #2563eb; /*제목 배경색*/
+    color: white; /*제목 글자색*/
+    font-size: 14px;
+    border : 1px solid white;
+}
+
+.schedule-body td{
+    color: #333333;
+    font-size: 14px;
+}
+
+.today td{
+    background-color: #fff9c4;
+}
+
+.schedule-events{
+    text-align: left;
+    margin-top: 50px;
+}
+
+.schedule-events h2{
+    margin-left: 40px;
+}
+
+/*이력사항 페이지 css*/
+.history-body{
+    width: 80%; /*전체 너비 설정*/
+    margin: 70px 0; /*위아래 여백 및 왼쪽 정렬*/
+}
+
+.history-body h1{
+    margin-bottom: 60px; /*제목과 이력 사이 여백*/
+}
+
+.history-item{
+    display: flex; /*날짜와 내용을 가로 배치*/
+    width: 80%; /*이력 전체 너비*/
+    margin: 0 auto 50px; /*가운데 정렬 및 아래 여백*/
+}
+
+.date{
+    width: 150px; 
+    text-align: left; 
+    padding-right: 30px; /*날짜와 내용 사이 여백*/
+    font-weight: bold; /*날짜 굵게*/
+    color: #2563eb;
+}
+
+.content{
+    flex: 1; /*.date 사용 후 남은 공간 사용*/
+    text-align: left; /*내용 왼쪽 정렬*/
+    padding-left: 30px; /*내용 왼쪽 여백*/
+    border-left: 2px solid #2563eb; /*타임라인 선*/
+}
+
+.content h2{
+    margin-top: 0; /*위쪽 여백 제거*/
+    margin-bottom: 10px; /*제목과 설명 사이 여백*/
+}
+
+.content p{
+    margin: 0; /*기본 여백 제거*/
+    color: #333333; /*설명 글자색*/
+}
+
+/*이력 페이지 애니메이션 추가*/
+@keyframes history-show{
+    from{
+        opacity: 0; /*처음에는 투명하게*/
+        transform: translateY(20px); /*아래부터 시작*/
+    }
+
+    to{
+        opacity: 1; /*최종 표현*/
+        transform: translateY(0); /*원위치*/
+    }
+}
+
+.history-item{
+    opacity: 0; /*처음에는 숨김*/
+    animation: history-show 0.7s ease forwards; /*애니메이션 실행/시간/부드럽게/마지막유지*/
+}
+/*똑같은 클래스인 item의 순서를 nth-child()로 지정*/
+.history-item:nth-child(2){
+    animation-delay: 0.4s;
+}
+
+.history-item:nth-child(3){
+    animation-delay: 0.8s;
+}
+
+.history-item:nth-child(4){
+    animation-delay: 1.2s;
+}
+
+.history-item:nth-child(5){
+    animation-delay: 1.6s;
+}
+
+.history-item:nth-child(6){
+    animation-delay: 2.0s;
+}
+
+.history-item:nth-child(7){
+    animation-delay: 2.4s;
+}
+
+.history-item:nth-child(8){
+    animation-delay: 2.8s;
+}
+
+/*관심사 페이지 css*/
+.hobby-body{
+    width: 90%;
+    margin: 70px auto;
+}
+
+.hobby-body h1{
+    margin-bottom: 60px;
+}
+
+.hobby-container{
+    display: flex;
+    justify-content: center; /*카드를 가운데 정렬*/
+    gap: 120px; /*카드 간 간격*/
+}
+
+.hobby-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hobby-item p{
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap; /*문장이 길어도 한 줄로 표시*/
+    padding-top: 30px;
+}
+
+.hobby-circle{
+    position: relative; /*h2 위치 기준잡기*/
+    width: 300px; /*원 너비*/
+    height: 300px; /*원 높이*/
+    margin: 0 auto 25px;
+
+    border-radius: 50%;
+    overflow: hidden; /*원 밖으로 이미지 새어나가기 방지*/
+    border: 2px solid #93c5fd;
+
+    transition:transform 0.3s ease; /*확대효과 부드럽게*/
+}
+
+.hobby-circle img{
+    width: 100%; /*이미지 너비*/
+    height: 100%; /*이미지 높이*/
+    object-fit: cover; /*원 안의 커버사진으로*/
+    position: relative; /*z-index를 적용하기 위한 기준*/
+    z-index: 1; /*사진을 제목보다 아래에 배치*/
+    transition: filter 0.3s ease; /*블러처리 부드럽게*/
+}
+
+.hobby-circle h2{
+    color: white;
+    font-size:30px;
+    position:absolute; /*사진 위 글자 배치*/
+    top:40%; /*세로 가운데*/
+    left:50%; /*가로 가운데*/
+    transform: translate(-50%, -50%);
+    opacity: 0; /*평소엔 안보이게*/
+    transition: opacity 0.3s ease; 
+}
+
+.hobby-circle:hover{
+    transform: scale(1.08); /*마우스 올렸을 때 크기 살짝 키움*/
+}
+
+.hobby-circle:hover img{
+    filter: blur(2px);
+}
+
+.hobby-circle:hover h2{
+    opacity: 1; /*마우스 올리면 제목 등장*/
+    background-color: rgba(0, 0, 0, 0.55); /*제목 뒤에 반투명한 검정 배경*/
+    padding: 10px 20px; /*제목 주변에 여백을 만듦*/
+    border-radius: 20px; /*배경 모서리를 둥글게 만듦*/
+    z-index: 2; /*블러 처리되는 사진보다 위에 표시*/
+}
+

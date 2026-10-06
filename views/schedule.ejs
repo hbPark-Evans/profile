@@ -3,10 +3,16 @@
 <head> 
     <meta charset="UTF-8">
     <title> 박현빈 스케줄 </title>
+
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
+    <div class="schedule-body">
+    
     <h1> 강의시간표 및 주계획 </h1>
-    <table border="1">
+
+    <table>
         <tr>
             <th>요일</th>
             <th>1교시 (9:00 ~ 9:50) </th>
@@ -21,7 +27,7 @@
             <th>10교시 (17:15 ~ 18:05) </th>
         </tr>
 
-        <tr>
+        <tr class="mon">
             <td>월요일</td>
             <td colspan="5">공강 </td>
             <td colspan="2">ADsP 자격증 공부</td>
@@ -29,7 +35,7 @@
             <td>공강</td>
         </tr>
 
-        <tr>
+        <tr class="tue">
             <td>화요일</td>
             <td>공강 </td>
             <td colspan="3">웹 개발 실습 </td>
@@ -37,7 +43,7 @@
             <td colspan="3">Opic test 공부</td>
         </tr>
 
-        <tr>
+        <tr class="wed">
             <td>수요일</td>
             <td colspan="3">사물 인터넷 실습 </td>
             <td>공강</td>
@@ -45,7 +51,7 @@
             <td colspan="4">ADsP 자격증 or Opic test 공부</td>
         </tr>
 
-        <tr>
+        <tr class="thu">
             <td>목요일</td>
             <td colspan="4">공강 </td>
             <td>공강</td>
@@ -54,7 +60,7 @@
             <td>공강</td>
         </tr>
 
-        <tr>
+        <tr class="fri">
             <td>금요일</td>
             <td colspan="2">네트워크 보안</td>
             <td>공강</td>
@@ -63,6 +69,8 @@
             <td colspan="3">RF공학 실습</td>
         </tr>
     </table>
+
+    <div class="schedule-events">
     <h2>주요 일정</h2>
     <!-- 리스트화 -->
     <ul>
@@ -72,5 +80,27 @@
         <li>12월 7일 ~ 11일 기말고사</li>
         <li>12월 말 Opic test 시험 예정</li>
     </ul>
+    </div>
+    </div>
+
+<script> /*자바스크립트*/
+    const today = new Date().getDay(); /*요일을 받아서 숫자로 변환*/
+
+    const days = [ /*배열*/
+        "",
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        ""
+    ];
+
+    const todayRow = document.querySelector("." + days[today])
+
+    if (todayRow) {
+        todayRow.classList.add("today");
+    }
+</script>
 </body>
 </html>

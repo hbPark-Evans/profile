@@ -13,9 +13,11 @@
 
 /*공통 바디 css*/
 body {
-    background-color:white; /*배경색*/
+    background:linear-gradient(to bottom, #dbeafe, white 35%); /* 모든 페이지에 파란색에서 흰색으로 이어지는 배경 적용 */
     text-align: center; /*텍스트 중앙 정렬*/
     font-family: arial, "Noto Sans KR",sans-serif; /*전체 페이지 글꼴 설정*/
+    background-repeat:no-repeat; /* 배경 그라데이션이 아래에서 반복되지 않도록 설정 */
+    background-size:100% 100%; /* 페이지 전체 높이에 맞춰 그라데이션을 한 번만 표시 */
 }
 
 /*메인 페이지 css*/
@@ -27,6 +29,7 @@ body {
 
 .main-profile{
     margin-top: 100px; /*프로필 위 여백*/
+    padding:40px 60px;
 }
 
 .main-h1{
@@ -90,12 +93,15 @@ body {
     width: 100%; /*시간표 너비를 전체 사용*/
     border-collapse: collapse; /*테이블 테두리를 하나로 합침*/
     margin-top: 30px; /*제목과 시간표 사이 여백*/
+    border-radius: 10px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(37,99,235,0.2);
 }
 
 .schedule-body th, /*th=제목칸 , td=내용칸*/
 .schedule-body td {
-    border: 1px solid #2563eb; /*칸 테두리*/
     padding: 14px 8px; /*칸 안쪽 여백*/
+    border:1px solid #93c5fd;
 }
 
 .schedule-body th{
@@ -103,6 +109,7 @@ body {
     color: white; /*제목 글자색*/
     font-size: 14px;
     border : 1px solid white;
+    font-weight:bold;
 }
 
 .schedule-body td{
@@ -115,8 +122,13 @@ body {
 }
 
 .schedule-events{
-    text-align: left;
-    margin-top: 50px;
+    text-align:left;
+    margin-top:50px;
+    padding:25px 35px; 
+    background:white; 
+    border:1px solid #93c5fd; 
+    border-radius:15px; 
+    box-shadow:0 6px 18px rgba(37,99,235,0.2); 
 }
 
 .schedule-events h2{
@@ -127,16 +139,25 @@ body {
 .history-body{
     width: 80%; /*전체 너비 설정*/
     margin: 70px 0; /*위아래 여백 및 왼쪽 정렬*/
+    text-align:center;
 }
 
 .history-body h1{
     margin-bottom: 60px; /*제목과 이력 사이 여백*/
+    text-align: center;
+    position:relative; /* 제목 위치 조정을 위한 기준 */
+    left:10%; /* body의 width 80을 고려한 왼쪽 */
 }
 
 .history-item{
     display: flex; /*날짜와 내용을 가로 배치*/
     width: 80%; /*이력 전체 너비*/
     margin: 0 auto 50px; /*가운데 정렬 및 아래 여백*/
+    padding:25px 35px; /* 카드 내부 여백 */
+    background:white; /* 흰색 카드 배경 */
+    border:1px solid #93c5fd; /* 파란색 테두리 */
+    border-radius:15px; /* 카드 모서리를 둥글게 표시 */
+    box-shadow:0 6px 18px rgba(37,99,235,0.12); /* 은은한 그림자 */
 }
 
 .date{
@@ -217,6 +238,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity:0;
+    animation:fade-up 2s ease forwards;
 }
 
 .hobby-item p{
@@ -638,4 +661,22 @@ body {
     border:none;
     border-radius:10px;
     box-shadow: 0 4px 12px rgba(37,99,235,0.5);
+}
+
+/* 앨범명과 앨범 이미지를 세로로 배치 */
+.album-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
+
+/* 앨범명을 앨범 이미지 위에 표시 */
+.album-box h4{
+    width:250px;
+    margin:0;
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
+    color:#000000;
 }
